@@ -4,14 +4,35 @@ import (
 	"fmt"
 	"math"
 	"os"
-	greetings "https://github.com/jaecheon/greetings"
+
+	"github.com/jaecheon/greetings"
+	"jclee.com/greeting2"
 )
 
 func main() {
-	fmt.Printf("say yaaaahhhh")
+	fmt.Println("say yaaaahhhh")
 	// printEnvs()
 	// printSlice()
-	initShape()
+	// initShape()
+
+	msg, err := greeting2.Hello("jclee")
+	if(err != nil) {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(msg)
+
+	//1. greeting2 폴더에서 아래 명령실행
+	// go mod init jclee.com/greeting2
+	//2. 현재 폴더에서 아래 명령실행(git repository없이 로컬에서 사용할 시 사용)
+	// go mod edit -replace jclee.com/greeting2=./greeting2
+	msg2, err2 := greetings.Hello("jclee")
+	if(err2 != nil) {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(msg2)
+
 }
 
 func printEnvs() {
@@ -42,10 +63,10 @@ func printMap() {
 	}
 
 	// Map 키 체크
-	val, exists := myMap["MSFT"]
-	if !exists {
-		fmt.Println("No MSFT ticker - myMap")
-	}
+	// val exists := myMap["MSFT"]
+	// if !exists {
+	// 	fmt.Println("No MSFT ticker - myMap")
+	// }
 
 	// 값이 없으면 nil 혹은 zero 리턴
 	noData := myMap["others"]
