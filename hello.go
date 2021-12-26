@@ -6,21 +6,23 @@ import (
 	"os"
 
 	"github.com/jaecheon/greetings"
-	"jclee.com/greeting2"
+	"jclee.com/gochannel"
+	"jclee.com/gocrawler"
+	"jclee.com/goroutine"
 )
 
 func main() {
-	fmt.Println("say yaaaahhhh")
+	// fmt.Println("say yaaaahhhh")
 	// printEnvs()
 	// printSlice()
 	// initShape()
 
-	msg, err := greeting2.Hello("jclee")
-	if(err != nil) {
-		fmt.Println(err.Error())
-	}
+	// msg, err := greeting2.Hello("jclee")
+	// if(err != nil) {
+	// 	fmt.Println(err.Error())
+	// }
 
-	fmt.Println(msg)
+	// fmt.Println(msg)
 
 	//1. greeting2 폴더에서 아래 명령실행
 	// go mod init jclee.com/greeting2
@@ -28,11 +30,19 @@ func main() {
 	// go mod edit -replace jclee.com/greeting2=./greeting2
 	msg2, err2 := greetings.Hello("jclee")
 	if(err2 != nil) {
-		fmt.Println(err.Error())
+		fmt.Println(err2.Error())
 	}
 
 	fmt.Println(msg2)
 
+	goroutine.Gosay()
+
+	gochannel.Gochannel()
+
+	// 해결할 문제 남음
+	// gogeneric.Gogen()
+
+	gocrawler.RunQuery("https://hani.co.kr")
 }
 
 func printEnvs() {
